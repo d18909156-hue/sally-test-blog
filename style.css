@@ -672,3 +672,6 @@ footer {
     margin-top: 16px;
     font-size: 16px;
 }
+#about-text {
+    white-space: pre-line;
+}

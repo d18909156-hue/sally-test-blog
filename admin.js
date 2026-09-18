@@ -41,6 +41,157 @@ function getAdminSecret() {
     return document.getElementById("admin-secret").value.trim();
 }
 // =========================
+// ГЛАВНЫЙ ЭКРАН
+// =========================
+
+async function loadHero() {
+
+    try {
+
+        const response = await fetch(
+            `${API_URL}/api/hero`
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                "Не удалось загрузить главный экран"
+            );
+        }
+
+        const hero = await response.json();
+
+        const heroLabel =
+            document.getElementById("hero-label");
+
+        const heroTitle =
+            document.getElementById("hero-title");
+
+        const heroText =
+            document.getElementById("hero-text");
+
+
+        if (heroLabel) {
+            heroLabel.value =
+                hero.hero_label || "";
+        }
+
+        if (heroTitle) {
+            heroTitle.value =
+                hero.hero_title || "";
+        }
+
+        if (heroText) {
+            heroText.value =
+                hero.hero_text || "";
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "LOAD HERO ERROR:",
+            error
+        );
+
+    }
+}
+
+
+async function saveHero() {
+
+    const heroLabel =
+        document.getElementById("hero-label").value.trim();
+
+    const heroTitle =
+        document.getElementById("hero-title").value.trim();
+
+    const heroText =
+        document.getElementById("hero-text").value.trim();
+
+    const heroMessage =
+        document.getElementById("hero-message");
+
+    const adminSecret =
+        getAdminSecret();
+
+
+    if (!heroLabel || !heroTitle || !heroText) {
+
+        heroMessage.textContent =
+            "Заполни все поля.";
+
+        return;
+    }
+
+
+    if (!adminSecret) {
+
+        heroMessage.textContent =
+            "Введи пароль администратора.";
+
+        return;
+    }
+
+
+    try {
+
+        const response = await fetch(
+            `${API_URL}/api/hero`,
+            {
+                method: "PUT",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization":
+                        `Bearer ${adminSecret}`
+                },
+
+                body: JSON.stringify({
+                    hero_label: heroLabel,
+                    hero_title: heroTitle,
+                    hero_text: heroText
+                })
+            }
+        );
+
+
+        const result =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                result.error ||
+                `Ошибка сохранения (${response.status})`
+            );
+        }
+
+
+        heroMessage.textContent =
+            "Главный экран сохранён.";
+
+
+    } catch (error) {
+
+        console.error(
+            "SAVE HERO ERROR:",
+            error
+        );
+
+        heroMessage.textContent =
+            "Ошибка: " + error.message;
+    }
+}
+
+
+document
+    .getElementById("save-hero")
+    .addEventListener(
+        "click",
+        saveHero
+    );
+// =========================
 // О САЛЛИ
 // =========================
 
@@ -729,5 +880,6 @@ loadArticles();
 // ПЕРВОНАЧАЛЬНАЯ ЗАГРУЗКА
 // =========================
 
+loadHero();
 loadAbout();
 loadArticles();
