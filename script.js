@@ -465,8 +465,62 @@ async function renderArticlePage() {
 // ЗАПУСК
 // -------------------------
 
+// -------------------------
+// ЗАГРУЗКА ГЛАВНОГО ЭКРАНА
+// -------------------------
+
+async function loadHero() {
+
+    try {
+
+        const response =
+            await fetch(`${API_URL}/api/hero`);
+
+        if (!response.ok) {
+            throw new Error(
+                "Не удалось загрузить главный экран"
+            );
+        }
+
+        const hero =
+            await response.json();
+
+        const heroLabel =
+            document.getElementById("hero-label");
+
+        const heroTitle =
+            document.getElementById("hero-title");
+
+        const heroText =
+            document.getElementById("hero-text");
+
+
+        if (heroLabel) {
+            heroLabel.textContent =
+                hero.hero_label || "";
+        }
+
+        if (heroTitle) {
+            heroTitle.textContent =
+                hero.hero_title || "";
+        }
+
+        if (heroText) {
+            heroText.textContent =
+                hero.hero_text || "";
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Ошибка загрузки главного экрана:",
+            error
+        );
+
+    }
+}
+loadHero();
 loadAbout();
-
 renderHomePage();
-
 renderArticlePage();
