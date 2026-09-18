@@ -29,7 +29,49 @@ async function loadArticles() {
     }
 }
 
+// -------------------------
+// ЗАГРУЗКА ИНФОРМАЦИИ О САЛЛИ
+// -------------------------
 
+async function loadAbout() {
+
+    try {
+
+        const response =
+            await fetch(`${API_URL}/api/about`);
+
+        if (!response.ok) {
+            throw new Error("Не удалось загрузить информацию о Салли");
+        }
+
+        const about =
+            await response.json();
+
+        const aboutTitle =
+            document.getElementById("about-title");
+
+        const aboutText =
+            document.getElementById("about-text");
+
+        if (aboutTitle) {
+            aboutTitle.textContent =
+                about.about_title || "";
+        }
+
+        if (aboutText) {
+            aboutText.textContent =
+                about.about_text || "";
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Ошибка загрузки информации о Салли:",
+            error
+        );
+
+    }
+}
 // -------------------------
 // ГЛАВНАЯ СТРАНИЦА
 // -------------------------
@@ -422,6 +464,8 @@ async function renderArticlePage() {
 // -------------------------
 // ЗАПУСК
 // -------------------------
+
+loadAbout();
 
 renderHomePage();
 

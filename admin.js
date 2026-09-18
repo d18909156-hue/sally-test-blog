@@ -40,7 +40,154 @@ function addLink() {
 function getAdminSecret() {
     return document.getElementById("admin-secret").value.trim();
 }
+// =========================
+// О САЛЛИ
+// =========================
 
+async function loadAbout() {
+
+    try {
+
+        const response = await fetch(
+            `${API_URL}/api/about`
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                "Не удалось загрузить информацию о Салли"
+            );
+        }
+
+        const about = await response.json();
+
+        const aboutTitle =
+            document.getElementById("about-title");
+
+        const aboutText =
+            document.getElementById("about-text");
+
+        const aboutImage =
+            document.getElementById("about-image");
+
+
+        // Заголовок
+        if (aboutTitle) {
+            aboutTitle.value =
+                about.about_title || "";
+        }
+
+
+        // Текст
+        if (aboutText) {
+            aboutText.value =
+                about.about_text || "";
+        }
+
+
+        // Изображение
+        if (aboutImage) {
+            aboutImage.value =
+                about.about_image || "";
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "LOAD ABOUT ERROR:",
+            error
+        );
+
+    }
+}
+
+
+async function saveAbout() {
+
+    const aboutTitle =
+        document.getElementById("about-title").value.trim();
+
+    const aboutText =
+        document.getElementById("about-text").value.trim();
+
+    const aboutImage =
+        document.getElementById("about-image").value.trim();
+
+    const aboutMessage =
+        document.getElementById("about-message");
+
+    const adminSecret =
+        getAdminSecret();
+
+
+    if (!aboutTitle || !aboutText) {
+
+        aboutMessage.textContent =
+            "Заполни заголовок и текст.";
+
+        return;
+    }
+
+
+    if (!adminSecret) {
+
+        aboutMessage.textContent =
+            "Введи пароль администратора.";
+
+        return;
+    }
+
+
+    try {
+
+        const response = await fetch(
+            `${API_URL}/api/about`,
+            {
+                method: "PUT",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization":
+                        `Bearer ${adminSecret}`
+                },
+
+                body: JSON.stringify({
+                    about_title: aboutTitle,
+                    about_text: aboutText,
+                    about_image: aboutImage
+                })
+            }
+        );
+
+
+        const result = await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                result.error ||
+                `Ошибка сохранения (${response.status})`
+            );
+        }
+
+
+        aboutMessage.textContent =
+            "Информация о Салли сохранена.";
+
+    } catch (error) {
+
+        console.error("SAVE ABOUT ERROR:", error);
+
+        aboutMessage.textContent =
+            "Ошибка: " + error.message;
+    }
+}
+
+
+document
+    .getElementById("save-about")
+    .addEventListener("click", saveAbout);
 
 // =========================
 // ЗАГРУЗИТЬ СПИСОК СТАТЕЙ
@@ -582,4 +729,5 @@ loadArticles();
 // ПЕРВОНАЧАЛЬНАЯ ЗАГРУЗКА
 // =========================
 
+loadAbout();
 loadArticles();

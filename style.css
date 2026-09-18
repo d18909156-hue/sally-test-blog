@@ -581,3 +581,94 @@ footer {
 
     cursor: pointer;
 }
+/* =========================
+   О САЛЛИ — АДМИНКА
+   ========================= */
+
+.admin-about {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid #ddd;
+}
+
+.admin-about .eyebrow {
+    margin-bottom: 10px;
+}
+
+.admin-about h2 {
+    margin-bottom: 28px;
+}
+
+.admin-about label {
+    display: block;
+    margin-bottom: 24px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.admin-about input,
+.admin-about textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    margin-top: 10px;
+    padding: 16px 18px;
+
+    border: 1px solid #ccc;
+    border-radius: 12px;
+
+    background: #fff;
+
+    font-family: inherit;
+    font-size: 18px;
+    line-height: 1.5;
+
+    outline: none;
+}
+
+.admin-about input:focus,
+.admin-about textarea:focus {
+    border-color: #999;
+}
+
+.admin-about textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.admin-about small {
+    display: block;
+    margin-top: 8px;
+
+    font-size: 14px;
+    line-height: 1.4;
+    color: #777;
+}
+
+#save-about {
+    display: block;
+    width: 100%;
+
+    margin-top: 8px;
+    padding: 16px 20px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #999;
+    color: #000;
+
+    font-family: inherit;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#save-about:hover {
+    background: #888;
+}
+
+#about-message {
+    margin-top: 16px;
+    font-size: 16px;
+}
