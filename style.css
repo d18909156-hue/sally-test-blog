@@ -675,3 +675,85 @@ footer {
 #about-text {
     white-space: pre-line;
 }
+/* =========================
+   ГЛАВНЫЙ ЭКРАН — АДМИНКА
+   ========================= */
+
+.admin-hero {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid #ddd;
+}
+
+.admin-hero .eyebrow {
+    margin-bottom: 10px;
+}
+
+.admin-hero h2 {
+    margin-bottom: 28px;
+}
+
+.admin-hero label {
+    display: block;
+    margin-bottom: 24px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.admin-hero input,
+.admin-hero textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    margin-top: 10px;
+    padding: 16px 18px;
+
+    border: 1px solid #ccc;
+    border-radius: 12px;
+
+    background: #fff;
+
+    font-family: inherit;
+    font-size: 18px;
+    line-height: 1.5;
+
+    outline: none;
+}
+
+.admin-hero input:focus,
+.admin-hero textarea:focus {
+    border-color: #999;
+}
+
+.admin-hero textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+#save-hero {
+    display: block;
+    width: 100%;
+
+    margin-top: 8px;
+    padding: 16px 20px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #999;
+    color: #000;
+
+    font-family: inherit;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#save-hero:hover {
+    background: #888;
+}
+
+#hero-message {
+    margin-top: 16px;
+    font-size: 16px;
+}
