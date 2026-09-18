@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Админка — Тест</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            Тест
+        </a>
+
+        <nav>
+            <a href="index.html">Сайт</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section class="admin">
+
+            <p class="eyebrow">
+                Панель администратора
+            </p>
+
+            <h1>
+                Новая статья
+            </h1>
+
+
+            <form id="article-form">
+
+                <label>
+                    Заголовок
+
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="Например: Салли и большая прогулка"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Дата
+
+                    <input
+                        type="date"
+                        id="date"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Краткое описание
+
+                    <textarea
+                        id="excerpt"
+                        rows="3"
+                        placeholder="Короткое описание статьи"
+                        required
+                    ></textarea>
+                </label>
+
+<label>
+    Изображение
+
+    <input
+        type="url"
+        id="image"
+        placeholder="https://example.com/photo.jpg"
+    >
+
+    <small>
+        Вставь прямую ссылку на изображение.
+    </small>
+
+    <div id="image-preview" class="image-preview"></div>
+</label>
+                <label>
+    Текст статьи
+
+    <div class="editor-toolbar">
+        <button type="button" onclick="formatText('bold')" title="Жирный">
+            <strong>B</strong>
+        </button>
+
+        <button type="button" onclick="formatText('italic')" title="Курсив">
+            <em>I</em>
+        </button>
+
+        <button type="button" onclick="formatText('underline')" title="Подчёркнутый">
+            <u>U</u>
+        </button>
+
+        <button type="button" onclick="formatText('formatBlock', 'h2')" title="Заголовок">
+            H2
+        </button>
+
+        <button type="button" onclick="formatText('formatBlock', 'h3')" title="Подзаголовок">
+            H3
+        </button>
+
+        <span class="toolbar-divider"></span>
+
+        <button type="button" onclick="formatText('justifyLeft')" title="По левому краю">
+            ≡
+        </button>
+
+        <button type="button" onclick="formatText('justifyCenter')" title="По центру">
+            ≡
+        </button>
+
+        <button type="button" onclick="formatText('justifyRight')" title="По правому краю">
+            ≡
+        </button>
+
+        <span class="toolbar-divider"></span>
+
+        <button type="button" onclick="formatText('insertUnorderedList')" title="Маркированный список">
+            • List
+        </button>
+
+        <button type="button" onclick="formatText('insertOrderedList')" title="Нумерованный список">
+            1. List
+        </button>
+
+        <button type="button" onclick="addLink()" title="Ссылка">
+            🔗
+        </button>
+    </div>
+
+    <div
+        id="content"
+        class="rich-editor"
+        contenteditable="true"
+        data-placeholder="Напиши здесь свою статью..."
+    ></div>
+</label>
+<label>
+    Пароль администратора
+
+    <input
+        type="password"
+        id="admin-secret"
+        placeholder="Введите пароль"
+        required
+    >
+</label>
+
+                <button type="submit">
+                    Опубликовать
+                </button>
+
+            </form>
+
+
+            <p id="message"></p>
+<section class="admin-articles">
+
+    <p class="eyebrow">
+        Опубликованные статьи
+    </p>
+
+    <div id="articles-list">
+        Загрузка...
+    </div>
+
+</section>
+        </section>
+
+    </main>
+
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>

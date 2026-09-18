@@ -1,0 +1,583 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    color: #171717;
+    background: #ffffff;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.header {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 32px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #171717;
+    text-decoration: none;
+
+    font-size: 20px;
+    font-weight: 600;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #666;
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: #171717;
+}
+
+
+/* =========================
+   MAIN
+   ========================= */
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 32px;
+}
+
+
+/* =========================
+   HERO
+   ========================= */
+
+.hero {
+    padding: 80px 0 120px;
+    max-width: 700px;
+}
+
+.eyebrow,
+.date {
+    color: #888;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.hero h1 {
+    font-size: 96px;
+    line-height: 0.95;
+    font-weight: 500;
+
+    margin: 20px 0 30px;
+}
+
+.intro {
+    color: #555;
+
+    font-size: 21px;
+
+    max-width: 560px;
+}
+
+
+/* =========================
+   SECTION
+   ========================= */
+
+.section-heading {
+    margin-bottom: 35px;
+}
+
+
+/* =========================
+   POSTS
+   ========================= */
+
+.posts {
+    display: flex;
+    flex-direction: column;
+
+    gap: 70px;
+}
+
+.post {
+    display: grid;
+
+    grid-template-columns: 300px 1fr;
+
+    gap: 45px;
+
+    align-items: center;
+}
+
+.post-image {
+    display: block;
+
+    height: 230px;
+
+    overflow: hidden;
+
+    background: #f2f2f2;
+}
+
+.post-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.4s ease;
+}
+
+.post-image:hover img {
+    transform: scale(1.04);
+}
+
+.post h2 {
+    font-size: 30px;
+
+    font-weight: 500;
+
+    margin: 12px 0;
+}
+
+.post h2 a {
+    color: #171717;
+    text-decoration: none;
+}
+
+.post-content > p:not(.date) {
+    color: #666;
+
+    margin-bottom: 20px;
+}
+
+.read-more {
+    color: #171717;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   ABOUT
+   ========================= */
+
+.about {
+    max-width: 600px;
+
+    margin-top: 160px;
+
+    padding-top: 50px;
+
+    border-top: 1px solid #ddd;
+}
+
+.about h2 {
+    font-size: 40px;
+
+    font-weight: 500;
+
+    margin: 15px 0;
+}
+
+.about p:last-child {
+    color: #666;
+
+    font-size: 17px;
+}
+
+
+/* =========================
+   ARTICLE
+   ========================= */
+
+.article-header {
+    max-width: 700px;
+
+    padding: 70px 0 50px;
+}
+
+.article-header h1 {
+    font-size: 64px;
+
+    line-height: 1.05;
+
+    font-weight: 500;
+
+    margin-top: 20px;
+}
+
+.article-image {
+    width: 100%;
+
+    max-height: 600px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.article-text {
+    max-width: 650px;
+
+    margin: 60px auto;
+
+    font-size: 19px;
+}
+
+.article-text p {
+    margin-bottom: 25px;
+}
+
+.back-link {
+    display: inline-block;
+
+    color: #171717;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    margin-bottom: 80px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding: 60px 32px;
+
+    color: #999;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   ADMIN FORM
+   ========================= */
+
+#article-form {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 1000px;
+
+    gap: 24px;
+}
+
+#article-form > label {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 8px;
+
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#article-form input,
+#article-form textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    font-family: inherit;
+    font-size: 18px;
+}
+
+#article-form input {
+    min-height: 52px;
+
+    padding: 12px 16px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    background: #fff;
+}
+
+#article-form textarea {
+    padding: 12px 16px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    resize: vertical;
+
+    background: #fff;
+}
+
+#article-form input:focus,
+#article-form textarea:focus {
+    outline: none;
+
+    border-color: #999;
+}
+
+
+/* =========================
+   IMAGE
+   ========================= */
+
+#article-form #image {
+    width: 100%;
+}
+
+#article-form small {
+    font-size: 14px;
+
+    color: #777;
+}
+
+.image-preview {
+    width: 100%;
+
+    margin-top: 8px;
+}
+
+
+/* =========================
+   EDITOR
+   ========================= */
+
+.editor-toolbar {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-top: 8px;
+
+    padding: 10px;
+
+    border: 1px solid #ddd;
+    border-bottom: none;
+
+    border-radius: 8px 8px 0 0;
+
+    background: #f7f7f7;
+}
+
+.editor-toolbar button {
+    min-width: 36px;
+    height: 34px;
+
+    padding: 0 10px;
+
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+    background: white;
+
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.editor-toolbar button:hover {
+    background: #f0f0f0;
+}
+
+.toolbar-divider {
+    width: 1px;
+    height: 28px;
+
+    background: #ddd;
+
+    margin: 3px 4px;
+}
+
+.rich-editor {
+    width: 100%;
+
+    min-height: 400px;
+
+    padding: 16px;
+
+    border: 1px solid #ddd;
+    border-radius: 0 0 8px 8px;
+
+    background: white;
+
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.7;
+
+    outline: none;
+}
+
+.rich-editor:focus {
+    border-color: #999;
+}
+
+.rich-editor:empty::before {
+    content: attr(data-placeholder);
+
+    color: #999;
+}
+
+.rich-editor h2,
+.rich-editor h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.rich-editor ul,
+.rich-editor ol {
+    padding-left: 24px;
+}
+
+.rich-editor a {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   ADMIN ARTICLES
+   ========================= */
+
+.admin-articles {
+    margin-top: 80px;
+
+    padding-top: 50px;
+
+    border-top: 1px solid #ddd;
+}
+
+#articles-list {
+    margin-top: 25px;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .header {
+        padding: 22px;
+    }
+
+    nav {
+        gap: 16px;
+    }
+
+    main {
+        padding: 40px 22px;
+    }
+
+    .hero {
+        padding: 50px 0 80px;
+    }
+
+    .hero h1 {
+        font-size: 64px;
+    }
+
+    .intro {
+        font-size: 18px;
+    }
+
+    .post {
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+    .post-image {
+        height: 260px;
+    }
+
+    .article-header h1 {
+        font-size: 45px;
+    }
+
+    .about {
+        margin-top: 100px;
+    }
+
+    /* ADMIN */
+
+    #article-form {
+        max-width: 100%;
+    }
+
+    #article-form input,
+    #article-form textarea {
+        font-size: 16px;
+    }
+
+    .rich-editor {
+        min-height: 300px;
+    }
+}
+
+/* BUTTON ОПУБЛИКОВАТЬ */
+#article-form > button[type="submit"] {
+    width: 100%;
+    min-height: 50px;
+    padding: 16px 24px;
+
+    font-size: 20px;
+    font-weight: 500;
+
+    border: 1px solid #8f958f;
+    border-radius: 8px;
+
+    background: #8f958f;
+    color: rgb(0, 0, 0);
+
+    cursor: pointer;
+}
